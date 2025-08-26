@@ -35,4 +35,8 @@ class Event extends Model
     {
         return $this->hasMany(SKU::class);
     }
+
+    public function order(){
+        return $this->belongsTo(Order::class);
+    }
 }
