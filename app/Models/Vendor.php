@@ -10,6 +10,7 @@ class Vendor extends Model
         'user_id',
         'name',
         'location',
+        'descrption',
         'email',
         'phone',
         'city',
