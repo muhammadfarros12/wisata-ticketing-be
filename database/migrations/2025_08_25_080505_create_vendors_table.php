@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('city');
-            $table->enum('verify_status', ['pending', 'approved'. 'rejected'])->default('pending');
+            $table->enum('verify_status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();
         });
     }
