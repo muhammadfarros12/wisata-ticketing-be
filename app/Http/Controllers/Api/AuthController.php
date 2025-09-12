@@ -81,4 +81,61 @@ class AuthController extends Controller
         );
     }
 
+    public function loginGoogle(Request $request){
+        $request->validate([
+            'id_token' => ['required', 'string'],
+        ]);
+
+        $idToken = $request->id_token;
+        $client = new \Google_Client(['client_id' => env('GOOGLE_CLIENT_ID')]);
+        $payload = $client->verifyIdToken($idToken);
+
+        if ($payload) {
+            $user = User::where('email', $payload['email'])->first();
+            $token = $user->createToken(name: 'auth_token')->plainTextToken;
+
+            if ($user){
+                return response()->json(
+                    [
+                        'status' => 'success',
+                        'message' => 'User logged in successfully',
+                        'data' => [
+                            'user' => $user,
+                            'token' => $token,
+                        ]
+                    ],
+                    200
+                );
+            } else {
+                $user = User::create([
+                    'name' => $payload['name'],
+                    'email' => $payload['email'],
+                    'password' => Hash::make($payload['sub']),
+                ]);
+
+                $token = $user->createToken(name: 'auth_token')->plainTextToken;
+
+                return response()->json(
+                    [
+                        'status' => 'success',
+                        'message' => 'User registered and logged in successfully',
+                        'data' => [
+                            'user' => $user,
+                            'access_token' => $token,
+                        ]
+                    ],
+                    200
+                );
+            }
+        } else {
+            return response()->json(
+                [
+                    'status' => 'error',
+                    'message' => 'Invalid ID token'
+                ],
+                401
+            );
+        }
+    }
+
 }

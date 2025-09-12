@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SKU extends Model
 {
+    protected $table = 'skus';
     protected $fillable = [
         'event_id',
         'name',
