@@ -21,7 +21,7 @@ final class CreatePaymentUrlService extends Midtrans{
             $item_details->push([
                 'id' => $sku->id,
                 'price' => $sku->price,
-                'quantity' => $item['qty'],
+                'quantity' => $item['quantity'],
                 'name' => $sku->name
             ]);
         }
