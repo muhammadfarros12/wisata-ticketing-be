@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    public function getAllEvents(){
+    public function getAllEvents()
+    {
         $events = Event::with(['vendor', 'category', 'ticket.sku'])->get();
 
         return response()->json([
@@ -18,7 +19,23 @@ class EventController extends Controller
         ], 200);
     }
 
-    public function categories(){
+    public function show(Request $request)
+    {
+        $event = Event::find($request->event_id);
+
+        $event->load(['vendor', 'category']);
+        $skus = $event->skus;
+        $event['skus'] = $skus;
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Event details fetched Successfully',
+            'data' => $event
+        ], 200);
+    }
+
+    public function categories()
+    {
         $categories = EventCategory::all();
 
         return response()->json([
@@ -28,7 +45,8 @@ class EventController extends Controller
         ], 200);
     }
 
-    public function create(Request $request){
+    public function create(Request $request)
+    {
         $request->validate([
             'vendor_id' => 'required|exists:vendors,id',
             'event_category_id' => 'required|exists:event_categories,id',
@@ -56,7 +74,8 @@ class EventController extends Controller
         ], 201);
 
     }
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $request->validate([
             'vendor_id' => 'required|exists:vendors,id',
             'event_category_id' => 'required|exists:event_categories,id',
@@ -71,7 +90,7 @@ class EventController extends Controller
         $event->update($request->all());
 
         if ($request->hasFile('image')) {
-            if($event->image){
+            if ($event->image) {
                 $oldImagePath = public_path('images/events/' . $event->image);
                 if (file_exists($oldImagePath)) {
                     unlink($oldImagePath);
@@ -94,7 +113,8 @@ class EventController extends Controller
 
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $event = Event::findOrFail($id);
 
         $event->delete();

@@ -31,7 +31,7 @@ class Event extends Model
         return $this->hasMany(Ticket::class);
     }
 
-    public function SKU()
+    public function skus()
     {
         return $this->hasMany(SKU::class);
     }
