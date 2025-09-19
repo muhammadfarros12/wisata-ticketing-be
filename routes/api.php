@@ -21,4 +21,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/event/{event_id}', [\App\Http\Controllers\Api\EventController::class, 'show']);
 
     Route::post('/create/order', [\App\Http\Controllers\Api\OrderController::class, 'create']);
+
+    Route::post('/create/sku', [\App\Http\Controllers\Api\SkuController::class, 'store']);
 });
