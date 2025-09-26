@@ -1,0 +1,1046 @@
+{
+	"info": {
+		"_postman_id": "6a34529c-b59f-492b-afc2-c03e0a15b1b9",
+		"name": "wisata db idn1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "14316498"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "sabil14",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "sabilfomo@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "fomo",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{baseUrl}}/api/register"
+					},
+					"response": [
+						{
+							"name": "Saved Response Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "sabil14",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "sabilfomo@mail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "fomo",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/register"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Sep 2025 08:12:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"User registered successfully\",\n    \"user\": {\n        \"name\": \"sabil14\",\n        \"email\": \"sabilfomo@mail.com\",\n        \"updated_at\": \"2025-09-02T08:12:39.000000Z\",\n        \"created_at\": \"2025-09-02T08:12:39.000000Z\",\n        \"id\": 3\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"admin@gmail.com\",\n    \"password\" : \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/api/login"
+					},
+					"response": [
+						{
+							"name": "Saved Response Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\" : \"admin@gmail.com\",\n    \"password\" : \"12345678\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:8000/api/login"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Sep 2025 05:47:46 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"User logged in successfully\",\n    \"data\": {\n        \"user\": {\n            \"id\": 1,\n            \"name\": \"admin\",\n            \"email\": \"admin@gmail.com\",\n            \"phone\": null,\n            \"email_verified_at\": null,\n            \"created_at\": \"2025-08-28T06:43:08.000000Z\",\n            \"updated_at\": \"2025-08-28T06:43:08.000000Z\",\n            \"is_vendor\": 0\n        },\n        \"access_token\": \"2|QFUgdoPQYq12WH7WT97GZHRyJ55UEowK5QrCaSAq7437e7c3\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "sabil",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "sabil@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "fomo",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{baseUrl}}/api/logout"
+					},
+					"response": [
+						{
+							"name": "Saved Response Logout",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "sabil",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "sabil@mail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "fomo",
+											"type": "text"
+										}
+									]
+								},
+								"url": "{{baseUrl}}/api/logout"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Sep 2025 08:17:07 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"User logged out successfully\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Event",
+			"item": [
+				{
+					"name": "events",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{baseUrl}}/api/events"
+					},
+					"response": [
+						{
+							"name": "events",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "sabil",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "sabil@mail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "fomo",
+											"type": "text"
+										}
+									]
+								},
+								"url": "{{baseUrl}}/api/events"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 04 Sep 2025 06:24:26 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"event_category_id\": 1,\n            \"vendor_id\": 1,\n            \"name\": \"pantai kapuk\",\n            \"description\": \"pantai ter-the best\",\n            \"image\": \"image.png\",\n            \"start_date\": \"2025-09-03\",\n            \"end_date\": \"2025-09-04\",\n            \"created_at\": null,\n            \"updated_at\": null,\n            \"vendor\": {\n                \"id\": 1,\n                \"user_id\": 2,\n                \"name\": \"PIK\",\n                \"description\": null,\n                \"location\": \"Kapuk\",\n                \"email\": \"kapuk@mail.com\",\n                \"phone\": \"12345678\",\n                \"city\": \"Kapuk Central City\",\n                \"verify_status\": \"approved\",\n                \"created_at\": \"2025-08-28T06:47:27.000000Z\",\n                \"updated_at\": \"2025-08-28T06:47:51.000000Z\"\n            },\n            \"category\": {\n                \"id\": 1,\n                \"name\": \"pantai\",\n                \"description\": \"wisata terbaik!\",\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            \"ticket\": [\n                {\n                    \"id\": 1,\n                    \"event_id\": 1,\n                    \"sku_id\": 1,\n                    \"ticket_code\": \"abcde\",\n                    \"ticket_date\": \"2025-09-05\",\n                    \"status\": \"available\",\n                    \"created_at\": null,\n                    \"updated_at\": null,\n                    \"sku\": {\n                        \"id\": 1,\n                        \"event_id\": 1,\n                        \"name\": \"Exclusive\",\n                        \"category\": \"pantai bagus\",\n                        \"price\": \"100000.00\",\n                        \"stock\": 20,\n                        \"day_type\": \"weekend\",\n                        \"created_at\": null,\n                        \"updated_at\": null\n                    }\n                }\n            ]\n        },\n        {\n            \"id\": 2,\n            \"event_category_id\": 1,\n            \"vendor_id\": 2,\n            \"name\": \"tour de bekasi\",\n            \"description\": \"ini adalah event sepeda legendaris yang sudah dilaksanakan dari 100 tahun lalu\",\n            \"image\": \"de-bekasi.png\",\n            \"start_date\": \"2025-09-03\",\n            \"end_date\": \"2025-09-04\",\n            \"created_at\": null,\n            \"updated_at\": null,\n            \"vendor\": {\n                \"id\": 2,\n                \"user_id\": 3,\n                \"name\": \"pt.fomo abadi\",\n                \"description\": null,\n                \"location\": \"bekasi\",\n                \"email\": \"fomoabadi@mail.com\",\n                \"phone\": \"12456789\",\n                \"city\": \"bekasi\",\n                \"verify_status\": \"approved\",\n                \"created_at\": \"2025-09-03T07:42:55.000000Z\",\n                \"updated_at\": \"2025-09-03T07:42:55.000000Z\"\n            },\n            \"category\": {\n                \"id\": 1,\n                \"name\": \"pantai\",\n                \"description\": \"wisata terbaik!\",\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            \"ticket\": []\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{baseUrl}}/api/categories"
+					},
+					"response": [
+						{
+							"name": "category",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "sabil",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "sabil@mail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "fomo",
+											"type": "text"
+										}
+									]
+								},
+								"url": "{{baseUrl}}/api/categories"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.27"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Sep 2025 09:03:06 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Event Categories fetched Successfully\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"pantai\",\n            \"description\": \"wisata terbaik!\",\n            \"created_at\": null,\n            \"updated_at\": null\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "create event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "vendor_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "event_category_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "jalan - jalan",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "aura farming",
+									"type": "text"
+								},
+								{
+									"key": "start_date",
+									"value": "2025-09-18",
+									"type": "text"
+								},
+								{
+									"key": "end_date",
+									"value": "2025-09-18",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/ammaar/Downloads/ asfdsv.JPG"
+								}
+							]
+						},
+						"url": "{{baseUrl}}/api/create/events"
+					},
+					"response": [
+						{
+							"name": "create event response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "vendor_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "event_category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "pacu jalur",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "aura farming",
+											"type": "text"
+										},
+										{
+											"key": "start_date",
+											"value": "2025-09-05",
+											"type": "text"
+										},
+										{
+											"key": "end_date",
+											"value": "2025-09-05",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/Users/ammaar/Downloads/unnamed.jpg"
+										}
+									]
+								},
+								"url": "{{baseUrl}}/api/create/events"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 04 Sep 2025 07:22:47 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Event created successfully\",\n    \"data\": {\n        \"vendor_id\": \"1\",\n        \"event_category_id\": \"1\",\n        \"name\": \"pacu jalur\",\n        \"description\": \"aura farming\",\n        \"start_date\": \"2025-09-05\",\n        \"end_date\": \"2025-09-05\",\n        \"image\": \"1756970567_unnamed.jpg\",\n        \"updated_at\": \"2025-09-04T07:22:47.000000Z\",\n        \"created_at\": \"2025-09-04T07:22:47.000000Z\",\n        \"id\": 6\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "method",
+								"value": "DELETE",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/delete/event/5",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"delete",
+								"event",
+								"5"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete event response",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "method",
+										"value": "DELETE",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/delete/event/5",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"delete",
+										"event",
+										"5"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "5",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 04 Sep 2025 07:51:42 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Event deleted successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "show details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "vendor_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "event_category_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "pacu jalur",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "aura farming",
+									"type": "text"
+								},
+								{
+									"key": "start_date",
+									"value": "2025-09-05",
+									"type": "text"
+								},
+								{
+									"key": "end_date",
+									"value": "2025-09-05",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/ammaar/Downloads/unnamed.jpg"
+								}
+							]
+						},
+						"url": "{{baseUrl}}/api/event/1"
+					},
+					"response": [
+						{
+							"name": "show details response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "vendor_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "event_category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "pacu jalur",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "aura farming",
+											"type": "text"
+										},
+										{
+											"key": "start_date",
+											"value": "2025-09-05",
+											"type": "text"
+										},
+										{
+											"key": "end_date",
+											"value": "2025-09-05",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/Users/ammaar/Downloads/unnamed.jpg"
+										}
+									]
+								},
+								"url": "{{baseUrl}}/api/event/1"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 12 Sep 2025 06:46:27 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Event details fetched Successfully\",\n    \"data\": {\n        \"id\": 1,\n        \"event_category_id\": 1,\n        \"vendor_id\": 1,\n        \"name\": \"pantai kapuk\",\n        \"description\": \"pantai ter-the best\",\n        \"image\": \"image.png\",\n        \"start_date\": \"2025-09-03\",\n        \"end_date\": \"2025-09-04\",\n        \"created_at\": null,\n        \"updated_at\": null,\n        \"skus\": \"fomo\",\n        \"vendor\": {\n            \"id\": 1,\n            \"user_id\": 2,\n            \"name\": \"PIK\",\n            \"description\": null,\n            \"location\": \"Kapuk\",\n            \"email\": \"kapuk@mail.com\",\n            \"phone\": \"12345678\",\n            \"city\": \"Kapuk Central City\",\n            \"verify_status\": \"approved\",\n            \"created_at\": \"2025-08-28T06:47:27.000000Z\",\n            \"updated_at\": \"2025-08-28T06:47:51.000000Z\"\n        },\n        \"category\": {\n            \"id\": 1,\n            \"name\": \"pantai\",\n            \"description\": \"wisata terbaik!\",\n            \"created_at\": null,\n            \"updated_at\": null\n        }\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"event_id\": 1,\n    \"quantity\": 1,\n    \"event_date\" : \"2025-08-16\",\n    \"order_details\": [\n        {\n            \"sku_id\": 1,\n            \"quantity\" : 1\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/api/create/order"
+					},
+					"response": [
+						{
+							"name": "Order",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"event_id\": 1,\n    \"quantity\": 1,\n    \"event_date\" : \"2025-08-16\",\n    \"order_details\": [\n        {\n            \"sku_id\": 1,\n            \"quantity\" : 1\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/create/order"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Sep 2025 20:38:14 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Order created successfully\",\n    \"data\": {\n        \"user_id\": 1,\n        \"event_id\": 1,\n        \"quantity\": 1,\n        \"total_price\": 100000,\n        \"event_date\": \"2025-08-16\",\n        \"updated_at\": \"2025-09-15T20:38:13.000000Z\",\n        \"created_at\": \"2025-09-15T20:38:13.000000Z\",\n        \"id\": 6,\n        \"user\": {\n            \"id\": 1,\n            \"name\": \"admin\",\n            \"email\": \"admin@gmail.com\",\n            \"phone\": null,\n            \"email_verified_at\": null,\n            \"created_at\": \"2025-08-28T06:43:08.000000Z\",\n            \"updated_at\": \"2025-08-28T06:43:08.000000Z\",\n            \"is_vendor\": 0\n        },\n        \"orderItems\": [\n            {\n                \"sku_id\": 1,\n                \"quantity\": 1\n            }\n        ],\n        \"payment_url\": \"https://app.sandbox.midtrans.com/snap/v4/redirection/b14fc2ec-b27e-4dce-b53c-94e6df07d36d\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "sku",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{token}}"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"event_id\": 1,\n  \"name\": \"Reguler Weekend Pass\",\n  \"category\": \"pantai bagus\",\n  \"price\": 50000,\n  \"stock\": 10,\n  \"day_type\": \"weekday\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/api/create/sku"
+			},
+			"response": []
+		}
+	]
+}
